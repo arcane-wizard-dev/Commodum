@@ -10,18 +10,23 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 
 **Key Feature**
 
-* **Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
+**Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
 
 ## Features
 
+Individual features and display options can be configured in the addon settings. Commodum supports an account profile and character profiles.
+
+### User Interface
+
 * Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
 * Automatically sets the faction whose reputation changed as the watched faction.
-* Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
-* Can independently sell every poor-quality (gray) item when a merchant window opens.
-* <sup>✨ NEW</sup> Can independently hide general loot notifications for items, money, and personal currencies.
+* Can independently hide general loot notifications for items, money, and personal currencies.
+
+### Merchant Actions
+
 * Automatically repairs all damaged items using personal funds when a repair merchant window opens.
-* All features can be activated or deactivated separately.
-* Supports an account profile and character profiles.
+* Can independently sell every poor-quality (gray) item when a merchant window opens.
+* Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens. Item markings are always saved per character, even when using the account profile.
 
 ## Supported Languages & Flavors
 
@@ -33,6 +38,7 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 > **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Commodum via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
 
 To manage the addon, use the following commands in your chat and press enter:
+
 * Type `/com` or `/commodum` to access the addon options menu.
 * Type `/com changelog` or `/commodum changelog` to open the changelog.
 
