@@ -8,7 +8,7 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 
 > ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
-**Key Feature**
+## Key Feature
 
 **Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
 
