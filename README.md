@@ -1,6 +1,6 @@
 # Commodum
 
-[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Commodum/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Commodum/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/arcane-wizard-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/arcane-wizard-dev/Commodum/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/arcane-wizard-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/arcane-wizard-dev/Commodum/releases)
 
 _Smooth out the little things._
 
