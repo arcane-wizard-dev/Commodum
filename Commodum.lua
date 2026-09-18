@@ -8,6 +8,9 @@ local Options = COM.Modules.Options
 local QualityOfLife = COM.Modules.QualityOfLife
 local Utils = COM.Modules.Utils
 
+-- Variables
+local isInitialized = false
+
 --------------
 --- Frames ---
 --------------
@@ -19,6 +22,8 @@ local CommodumFrame = CreateFrame("Frame", "Commodum")
 -----------------------
 
 local function SlashCommand(msg)
+	if not isInitialized then return end
+
 	local command = strtrim(msg or "")
 
 	if command == "" then
@@ -39,21 +44,29 @@ function CommodumFrame:OnEvent(event, ...)
 end
 
 function CommodumFrame:ADDON_LOADED(_, addOnName)
-	if addOnName == addonName then
-		local dbInit = Utils:InitializeDatabase()
-		Utils:InitializeMinimapButton()
-		Options:Initialize()
-		QualityOfLife:InitializeAutoSell()
-		QualityOfLife:ApplyLootToastSetting()
+	if addOnName ~= addonName or isInitialized then return end
 
-		Utils:OpenSettingsOnLoading()
+	local dbInit = Utils:InitializeDatabase()
 
-		Utils:PrintDebug(string.format(
-			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
-			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
-		))
-		Utils:PrintDebug("Addon fully loaded.")
+	if not dbInit then
+		AWL:GetAddon(addonName):AbortInitialization(self)
+		return
 	end
+
+	Utils:InitializeMinimapButton()
+	Options:Initialize()
+	QualityOfLife:InitializeAutoSell()
+	QualityOfLife:ApplyLootToastSetting()
+
+	Utils:OpenSettingsOnLoading()
+
+	isInitialized = true
+
+	Utils:PrintDebug(string.format(
+		"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+		tostring(dbInit.characterGUID), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
+	))
+	Utils:PrintDebug("Addon fully loaded.")
 end
 
 function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)

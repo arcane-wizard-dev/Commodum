@@ -42,45 +42,49 @@ function Utils:OpenSettings()
 end
 
 function Utils:IsAccountProfile()
-	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
+	local characterGUID = AWL.Utils:GetCharacterGUID()
 
-	return Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"]
+	return Commodum_Options_v3.profileKeys[characterGUID]["use-account"]
 end
 
 function Utils:OpenSettingsOnLoading()
-	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
+	local characterGUID = AWL.Utils:GetCharacterGUID()
 
-	if Commodum_Options_v2.profileKeys[characterRealmKey]["open-settings"] then
+	if Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] then
 		if not self:OpenSettings() then
 			return
 		end
 
-		Commodum_Options_v2.profileKeys[characterRealmKey]["open-settings"] = false
+		Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] = false
 	end
 end
 
 function Utils:ToggleProfileMode()
-	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
+	local characterGUID = AWL.Utils:GetCharacterGUID()
 	local useAccountProfile = self:IsAccountProfile()
 
-	Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"] = not useAccountProfile
-	Commodum_Options_v2.profileKeys[characterRealmKey]["open-settings"] = true
+	Commodum_Options_v3.profileKeys[characterGUID]["use-account"] = not useAccountProfile
+	Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] = true
 end
 
 function Utils:ResetAllCharacterProfiles()
-	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
+	local characterGUID = AWL.Utils:GetCharacterGUID()
 
-	Commodum_Options_v2.profiles = {}
-	Commodum_Options_v2.profileKeys = {}
+	Commodum_Options_v3.profiles = {}
+	Commodum_Options_v3.profileKeys = {}
 
-	Commodum_Options_v2.profileKeys[characterRealmKey] = {
+	Commodum_Options_v3.profileKeys[characterGUID] = {
 		["use-account"] = true,
 		["open-settings"] = true
 	}
 end
 
 function Utils:InitializeDatabase()
-	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
+	local characterGUID = AWL.Utils:GetCharacterGUID()
+
+	if not characterGUID then
+		return nil
+	end
 
 	local createdProfile = false
 	local createdProfileKey = false
@@ -94,35 +98,35 @@ function Utils:InitializeDatabase()
 		["quality-of-life"] = {}
 	}
 
-	if not Commodum_Options_v2 then
-		Commodum_Options_v2 = {
+	if not Commodum_Options_v3 then
+		Commodum_Options_v3 = {
 			["account"] = AWL.Utils:CopyTable(defaults),
 			["profiles"] = {},
 			["profileKeys"] = {}
 		}
 	end
 
-	if not Commodum_Options_v2.profiles[characterRealmKey] then
-		Commodum_Options_v2.profiles[characterRealmKey] = AWL.Utils:CopyTable(defaults)
+	if not Commodum_Options_v3.profiles[characterGUID] then
+		Commodum_Options_v3.profiles[characterGUID] = AWL.Utils:CopyTable(defaults)
 		createdProfile = true
 	end
 
-	if not Commodum_Options_v2.profileKeys[characterRealmKey] then
-		Commodum_Options_v2.profileKeys[characterRealmKey] = {
+	if not Commodum_Options_v3.profileKeys[characterGUID] then
+		Commodum_Options_v3.profileKeys[characterGUID] = {
 			["use-account"] = true,
 			["open-settings"] = false
 		}
 		createdProfileKey = true
 	end
 
-	local useAccountProfile = Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"]
+	local useAccountProfile = Commodum_Options_v3.profileKeys[characterGUID]["use-account"]
 
 	if useAccountProfile then
-		COM.Settings.general = Commodum_Options_v2.account["general"]
-		COM.Settings.qualityOfLife = Commodum_Options_v2.account["quality-of-life"]
+		COM.Settings.general = Commodum_Options_v3.account["general"]
+		COM.Settings.qualityOfLife = Commodum_Options_v3.account["quality-of-life"]
 	else
-		COM.Settings.general = Commodum_Options_v2.profiles[characterRealmKey]["general"]
-		COM.Settings.qualityOfLife = Commodum_Options_v2.profiles[characterRealmKey]["quality-of-life"]
+		COM.Settings.general = Commodum_Options_v3.profiles[characterGUID]["general"]
+		COM.Settings.qualityOfLife = Commodum_Options_v3.profiles[characterGUID]["quality-of-life"]
 	end
 
 	if not Commodum_DataAutoSell then
@@ -132,7 +136,7 @@ function Utils:InitializeDatabase()
 	COM.Data.autoSell = Commodum_DataAutoSell
 
 	return {
-		characterRealmKey = characterRealmKey,
+		characterGUID = characterGUID,
 		createdProfile = createdProfile,
 		createdProfileKey = createdProfileKey,
 		activeProfile = useAccountProfile and "account" or "character"

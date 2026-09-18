@@ -1,4 +1,4 @@
-## Interface: 120105, 120100
+## Interface: 120105, 120100, 16001
 ## Title: Commodum
 ## Author: Arcane Wizard | created by diomsg
 
@@ -13,7 +13,7 @@
 ## Notes-deDE: Dieses Addon bringt ein paar Komfortverbesserungen für den Spielalltag.
 
 ## LoadSavedVariablesFirst: 1
-## SavedVariables: Commodum_Options_v2
+## SavedVariables: Commodum_Options_v3
 ## SavedVariablesPerCharacter: Commodum_DataAutoSell
 
 ## AddonCompartmentFuncOnEnter: Commodum_CompartmentOnEnter
