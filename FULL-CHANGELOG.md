@@ -1,3 +1,6 @@
+**v1.25 (2026-09-20)**
+- Changed: Automatic reputation tracking no longer reselects the faction that is already being watched
+
 **v1.24 (2026-09-18)**
 - Added: TOC version for patch 1.60.1 [forever]
 - Changed: Character profiles now use GUIDs
