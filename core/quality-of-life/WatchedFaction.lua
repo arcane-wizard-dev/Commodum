@@ -12,5 +12,11 @@ function QualityOfLife:WatchFaction(factionID)
 		return
 	end
 
+	local watchedFactionData = C_Reputation.GetWatchedFactionData()
+	
+	if watchedFactionData and watchedFactionData.factionID == factionID then
+		return
+	end
+
 	C_Reputation.SetWatchedFactionByID(factionID)
 end
