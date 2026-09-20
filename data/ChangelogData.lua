@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: Automatic reputation tracking no longer reselects the faction that is already being watched"
+		}
+	},
+	{
+		version = "v1.24",
+		date = "2026-09-18",
+		entries = {
 			"Added: TOC version for patch 1.60.1 [forever]",
 			"Changed: Character profiles now use GUIDs",
 			"Changed: Addon initialization stops if the player identity is unavailable"
@@ -73,15 +80,6 @@ COM.CHANGELOG = {
 		date = "2026-08-01",
 		entries = {
 			"Added: Damaged items can now be repaired automatically with personal funds when a repair merchant window opens"
-		}
-	},
-	{
-		version = "v1.15",
-		date = "2026-07-28",
-		entries = {
-			"Added: General loot notifications for items, money, and personal currencies can now be hidden",
-			"Minor code adjustments",
-			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	}
 }
