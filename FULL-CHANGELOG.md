@@ -1,3 +1,7 @@
+**v1.26 (2026-09-22)**
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+- Minor code adjustments
+
 **v1.25 (2026-09-20)**
 - Changed: Automatic reputation tracking no longer reselects the faction that is already being watched
 
