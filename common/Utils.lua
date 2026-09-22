@@ -41,93 +41,22 @@ function Utils:OpenSettings()
 	return true
 end
 
-function Utils:IsAccountProfile()
-	local characterGUID = AWL.Utils:GetCharacterGUID()
-
-	return Commodum_Options_v3.profileKeys[characterGUID]["use-account"]
-end
-
-function Utils:OpenSettingsOnLoading()
-	local characterGUID = AWL.Utils:GetCharacterGUID()
-
-	if Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] then
-		if not self:OpenSettings() then
-			return
-		end
-
-		Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] = false
-	end
-end
-
-function Utils:ToggleProfileMode()
-	local characterGUID = AWL.Utils:GetCharacterGUID()
-	local useAccountProfile = self:IsAccountProfile()
-
-	Commodum_Options_v3.profileKeys[characterGUID]["use-account"] = not useAccountProfile
-	Commodum_Options_v3.profileKeys[characterGUID]["open-settings"] = true
-end
-
-function Utils:ResetAllCharacterProfiles()
-	local characterGUID = AWL.Utils:GetCharacterGUID()
-
-	Commodum_Options_v3.profiles = {}
-	Commodum_Options_v3.profileKeys = {}
-
-	Commodum_Options_v3.profileKeys[characterGUID] = {
-		["use-account"] = true,
-		["open-settings"] = true
-	}
-end
-
 function Utils:InitializeDatabase()
-	local characterGUID = AWL.Utils:GetCharacterGUID()
+	local dbInit = Addon:InitializeOptions({
+		databaseName = "Commodum_Options_v3",
+		defaults = COM.OPTIONS_DEFAULTS,
+		onOpenSettings = function()
+			return self:OpenSettings()
+		end
+	})
 
-	if not characterGUID then
+	if not dbInit then
 		return nil
 	end
 
-	local createdProfile = false
-	local createdProfileKey = false
-
-	local defaults = {
-		["general"] = {
-			["minimap-button"] = {
-				["hide"] = false
-			}
-		},
-		["quality-of-life"] = {}
-	}
-
-	if not Commodum_Options_v3 then
-		Commodum_Options_v3 = {
-			["account"] = AWL.Utils:CopyTable(defaults),
-			["profiles"] = {},
-			["profileKeys"] = {}
-		}
-	end
-
-	if not Commodum_Options_v3.profiles[characterGUID] then
-		Commodum_Options_v3.profiles[characterGUID] = AWL.Utils:CopyTable(defaults)
-		createdProfile = true
-	end
-
-	if not Commodum_Options_v3.profileKeys[characterGUID] then
-		Commodum_Options_v3.profileKeys[characterGUID] = {
-			["use-account"] = true,
-			["open-settings"] = false
-		}
-		createdProfileKey = true
-	end
-
-	local useAccountProfile = Commodum_Options_v3.profileKeys[characterGUID]["use-account"]
-
-	if useAccountProfile then
-		COM.Settings.general = Commodum_Options_v3.account["general"]
-		COM.Settings.qualityOfLife = Commodum_Options_v3.account["quality-of-life"]
-	else
-		COM.Settings.general = Commodum_Options_v3.profiles[characterGUID]["general"]
-		COM.Settings.qualityOfLife = Commodum_Options_v3.profiles[characterGUID]["quality-of-life"]
-	end
+	COM.Settings.global = dbInit.global
+	COM.Settings.general = dbInit.settings["general"]
+	COM.Settings.qualityOfLife = dbInit.settings["quality-of-life"]
 
 	if not Commodum_DataAutoSell then
 		Commodum_DataAutoSell = {}
@@ -135,12 +64,7 @@ function Utils:InitializeDatabase()
 
 	COM.Data.autoSell = Commodum_DataAutoSell
 
-	return {
-		characterGUID = characterGUID,
-		createdProfile = createdProfile,
-		createdProfileKey = createdProfileKey,
-		activeProfile = useAccountProfile and "account" or "character"
-	}
+	return dbInit
 end
 
 function Utils:InitializeMinimapButton()

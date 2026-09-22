@@ -2,6 +2,7 @@ local addonName, COM = ...
 
 -- Library
 local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
 
 -- Module imports
 local Options = COM.Modules.Options
@@ -49,7 +50,7 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 	local dbInit = Utils:InitializeDatabase()
 
 	if not dbInit then
-		AWL:GetAddon(addonName):AbortInitialization(self)
+		Addon:AbortInitialization(self)
 		return
 	end
 
@@ -58,13 +59,13 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 	QualityOfLife:InitializeAutoSell()
 	QualityOfLife:ApplyLootToastSetting()
 
-	Utils:OpenSettingsOnLoading()
+	Addon:OpenSettingsOnLoading()
 
 	isInitialized = true
 
 	Utils:PrintDebug(string.format(
-		"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
-		tostring(dbInit.characterGUID), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
+		"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, cleanedOptions=%s, activeProfile=%s",
+		tostring(dbInit.characterGUID), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.cleanedOptions), tostring(dbInit.activeProfile)
 	))
 	Utils:PrintDebug("Addon fully loaded.")
 end
