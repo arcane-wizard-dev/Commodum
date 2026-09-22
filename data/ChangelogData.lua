@@ -8,6 +8,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility",
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.25",
+		date = "2026-09-20",
+		entries = {
 			"Changed: Automatic reputation tracking no longer reselects the faction that is already being watched"
 		}
 	},
@@ -73,13 +81,6 @@ COM.CHANGELOG = {
 		date = "2026-08-04",
 		entries = {
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.16",
-		date = "2026-08-01",
-		entries = {
-			"Added: Damaged items can now be repaired automatically with personal funds when a repair merchant window opens"
 		}
 	}
 }
