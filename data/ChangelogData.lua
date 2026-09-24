@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Updated: Compatibility with the beta client [forever]"
+		}
+	},
+	{
+		version = "v1.26",
+		date = "2026-09-22",
+		entries = {
 			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility",
 			"Minor code adjustments"
 		}
@@ -23,7 +30,7 @@ COM.CHANGELOG = {
 		version = "v1.24",
 		date = "2026-09-18",
 		entries = {
-			"Added: TOC version for patch 1.60.1 [forever]",
+			"Added: Support for 'Forever'",
 			"Changed: Character profiles now use GUIDs",
 			"Changed: Addon initialization stops if the player identity is unavailable"
 		}
@@ -74,13 +81,6 @@ COM.CHANGELOG = {
 		date = "2026-08-14",
 		entries = {
 			"Removed: TOC version for patch 12.0.7 [retail]"
-		}
-	},
-	{
-		version = "v1.17",
-		date = "2026-08-04",
-		entries = {
-			"Minor code adjustments"
 		}
 	}
 }
