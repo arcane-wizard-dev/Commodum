@@ -6,7 +6,7 @@
 - Changed: Automatic reputation tracking no longer reselects the faction that is already being watched
 
 **v1.24 (2026-09-18)**
-- Added: TOC version for patch 1.60.1 [forever]
+- Added: Support for 'Forever'
 - Changed: Character profiles now use GUIDs
 - Changed: Addon initialization stops if the player identity is unavailable
 

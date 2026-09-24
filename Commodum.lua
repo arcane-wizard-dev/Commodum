@@ -57,7 +57,10 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 	Utils:InitializeMinimapButton()
 	Options:Initialize()
 	QualityOfLife:InitializeAutoSell()
-	QualityOfLife:ApplyLootToastSetting()
+
+	if AWL.GAME_TYPE_RETAIL then
+		QualityOfLife:ApplyLootToastSetting()
+	end
 
 	Addon:OpenSettingsOnLoading()
 
@@ -141,17 +144,21 @@ function CommodumFrame:SHOW_RATED_PVP_REWARD_TOAST(_, typeIdentifier, itemLink, 
 	))
 end
 
+if AWL.GAME_TYPE_RETAIL then
+	CommodumFrame:RegisterEvent("LOOT_ITEM_ROLL_WON")
+	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST")
+	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_UPGRADE")
+	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
+	CommodumFrame:RegisterEvent("SHOW_PVP_FACTION_LOOT_TOAST")
+	CommodumFrame:RegisterEvent("SHOW_RATED_PVP_REWARD_TOAST")
+end
+
 CommodumFrame:RegisterEvent("ADDON_LOADED")
 CommodumFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 CommodumFrame:RegisterEvent("FACTION_STANDING_CHANGED")
 CommodumFrame:RegisterEvent("MERCHANT_SHOW")
 CommodumFrame:RegisterEvent("MERCHANT_CLOSED")
-CommodumFrame:RegisterEvent("LOOT_ITEM_ROLL_WON")
-CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST")
-CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_UPGRADE")
-CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
-CommodumFrame:RegisterEvent("SHOW_PVP_FACTION_LOOT_TOAST")
-CommodumFrame:RegisterEvent("SHOW_RATED_PVP_REWARD_TOAST")
+
 CommodumFrame:SetScript("OnEvent", CommodumFrame.OnEvent)
 
 SLASH_Commodum1, SLASH_Commodum2 = '/com', '/commodum'

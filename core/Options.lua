@@ -93,56 +93,58 @@ function Options:Initialize()
 		shownPredicate	= isInterfaceExpanded
 	})
 
-	-- Hide Loot Toasts
-	local initializerHideLootToasts, settingHideLootToasts = AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_hide-loot-toasts",
-		variableName	= "hide-loot-toasts",
-		name			= L["options.quality-of-life.hide-loot-toasts.name"],
-		tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
-		default			= defaults["quality-of-life"]["hide-loot-toasts"],
-		onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
-		shownPredicate	= isInterfaceExpanded
-	})
+	if AWL.GAME_TYPE_RETAIL then
+		-- Hide Loot Toasts
+		local initializerHideLootToasts, settingHideLootToasts = AWL.Settings:AddCheckbox(category, {
+			variableTable	= COM.Settings.qualityOfLife,
+			settingKey		= addonName .. "_hide-loot-toasts",
+			variableName	= "hide-loot-toasts",
+			name			= L["options.quality-of-life.hide-loot-toasts.name"],
+			tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
+			default			= defaults["quality-of-life"]["hide-loot-toasts"],
+			onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
+			shownPredicate	= isInterfaceExpanded
+		})
 
-	-- Hide Item Loot Toasts
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_hide-loot-toasts-item",
-		variableName	= "hide-loot-toasts-item",
-		name			= L["options.quality-of-life.hide-loot-toasts.item.name"],
-		tooltip			= L["options.quality-of-life.hide-loot-toasts.item.tooltip"],
-		default			= defaults["quality-of-life"]["hide-loot-toasts-item"],
-		parentInit		= initializerHideLootToasts,
-		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isInterfaceExpanded
-	})
+		-- Hide Item Loot Toasts
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= COM.Settings.qualityOfLife,
+			settingKey		= addonName .. "_hide-loot-toasts-item",
+			variableName	= "hide-loot-toasts-item",
+			name			= L["options.quality-of-life.hide-loot-toasts.item.name"],
+			tooltip			= L["options.quality-of-life.hide-loot-toasts.item.tooltip"],
+			default			= defaults["quality-of-life"]["hide-loot-toasts-item"],
+			parentInit		= initializerHideLootToasts,
+			parentCondition	= function() return settingHideLootToasts:GetValue() end,
+			shownPredicate	= isInterfaceExpanded
+		})
 
-	-- Hide Money Loot Toasts
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_hide-loot-toasts-money",
-		variableName	= "hide-loot-toasts-money",
-		name			= L["options.quality-of-life.hide-loot-toasts.money.name"],
-		tooltip			= L["options.quality-of-life.hide-loot-toasts.money.tooltip"],
-		default			= defaults["quality-of-life"]["hide-loot-toasts-money"],
-		parentInit		= initializerHideLootToasts,
-		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isInterfaceExpanded
-	})
+		-- Hide Money Loot Toasts
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= COM.Settings.qualityOfLife,
+			settingKey		= addonName .. "_hide-loot-toasts-money",
+			variableName	= "hide-loot-toasts-money",
+			name			= L["options.quality-of-life.hide-loot-toasts.money.name"],
+			tooltip			= L["options.quality-of-life.hide-loot-toasts.money.tooltip"],
+			default			= defaults["quality-of-life"]["hide-loot-toasts-money"],
+			parentInit		= initializerHideLootToasts,
+			parentCondition	= function() return settingHideLootToasts:GetValue() end,
+			shownPredicate	= isInterfaceExpanded
+		})
 
-	-- Hide Currency Loot Toasts
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_hide-loot-toasts-currency",
-		variableName	= "hide-loot-toasts-currency",
-		name			= L["options.quality-of-life.hide-loot-toasts.currency.name"],
-		tooltip			= L["options.quality-of-life.hide-loot-toasts.currency.tooltip"],
-		default			= defaults["quality-of-life"]["hide-loot-toasts-currency"],
-		parentInit		= initializerHideLootToasts,
-		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isInterfaceExpanded
-	})
+		-- Hide Currency Loot Toasts
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= COM.Settings.qualityOfLife,
+			settingKey		= addonName .. "_hide-loot-toasts-currency",
+			variableName	= "hide-loot-toasts-currency",
+			name			= L["options.quality-of-life.hide-loot-toasts.currency.name"],
+			tooltip			= L["options.quality-of-life.hide-loot-toasts.currency.tooltip"],
+			default			= defaults["quality-of-life"]["hide-loot-toasts-currency"],
+			parentInit		= initializerHideLootToasts,
+			parentCondition	= function() return settingHideLootToasts:GetValue() end,
+			shownPredicate	= isInterfaceExpanded
+		})
+	end
 
 	local _, isMerchantExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.merchant"])
 
