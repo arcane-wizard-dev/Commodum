@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.27",
+		date = "2026-09-24",
+		entries = {
 			"Updated: Compatibility with the beta client [forever]"
 		}
 	},
@@ -74,13 +81,6 @@ COM.CHANGELOG = {
 			"Added: Changelog window available through the 'changelog' slash command",
 			"Removed: Version notice chat messages",
 			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
-		}
-	},
-	{
-		version = "v1.18",
-		date = "2026-08-14",
-		entries = {
-			"Removed: TOC version for patch 12.0.7 [retail]"
 		}
 	}
 }
