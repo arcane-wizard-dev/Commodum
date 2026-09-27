@@ -1,3 +1,6 @@
+**v1.28 (2026-09-27)**
+- Minor code adjustments
+
 **v1.27 (2026-09-24)**
 - Updated: Compatibility with the beta client [forever]
 
