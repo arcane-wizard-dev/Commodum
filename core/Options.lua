@@ -15,7 +15,6 @@ local QualityOfLife = COM.Modules.QualityOfLife
 local Utils = COM.Modules.Utils
 
 -- Variables
-local defaults = COM.OPTIONS_DEFAULTS
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
@@ -53,7 +52,7 @@ function Options:Initialize()
 		variableName	= "hide",
 		name			= L["options.general.minimap-button.name"],
 		tooltip			= L["options.general.minimap-button.tooltip"],
-		default			= not defaults.general["minimap-button"].hide
+		default			= not COM.OPTIONS_DEFAULTS.general["minimap-button"].hide
 	})
 
 	-- Debug Mode
@@ -63,7 +62,7 @@ function Options:Initialize()
 		variableName	= "debug-mode",
 		name			= L["options.general.debug-mode.name"],
 		tooltip			= L["options.general.debug-mode.tooltip"],
-		default			= defaults["general"]["debug-mode"]
+		default			= COM.OPTIONS_DEFAULTS["general"]["debug-mode"]
 	})
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.quality-of-life"]))
@@ -77,7 +76,7 @@ function Options:Initialize()
 		variableName	= "military-time",
 		name			= L["options.quality-of-life.military-time.name"],
 		tooltip			= L["options.quality-of-life.military-time.tooltip"],
-		default			= defaults["quality-of-life"]["military-time"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["military-time"],
 		onClick			= function() QualityOfLife:ApplyMilitaryTimeSetting() end,
 		shownPredicate	= isInterfaceExpanded
 	})
@@ -89,7 +88,7 @@ function Options:Initialize()
 		variableName	= "watched-faction",
 		name			= L["options.quality-of-life.watched-faction.name"],
 		tooltip			= L["options.quality-of-life.watched-faction.tooltip"],
-		default			= defaults["quality-of-life"]["watched-faction"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["watched-faction"],
 		shownPredicate	= isInterfaceExpanded
 	})
 
@@ -101,7 +100,7 @@ function Options:Initialize()
 			variableName	= "hide-loot-toasts",
 			name			= L["options.quality-of-life.hide-loot-toasts.name"],
 			tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
-			default			= defaults["quality-of-life"]["hide-loot-toasts"],
+			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
 			onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
 			shownPredicate	= isInterfaceExpanded
 		})
@@ -113,7 +112,7 @@ function Options:Initialize()
 			variableName	= "hide-loot-toasts-item",
 			name			= L["options.quality-of-life.hide-loot-toasts.item.name"],
 			tooltip			= L["options.quality-of-life.hide-loot-toasts.item.tooltip"],
-			default			= defaults["quality-of-life"]["hide-loot-toasts-item"],
+			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-item"],
 			parentInit		= initializerHideLootToasts,
 			parentCondition	= function() return settingHideLootToasts:GetValue() end,
 			shownPredicate	= isInterfaceExpanded
@@ -126,7 +125,7 @@ function Options:Initialize()
 			variableName	= "hide-loot-toasts-money",
 			name			= L["options.quality-of-life.hide-loot-toasts.money.name"],
 			tooltip			= L["options.quality-of-life.hide-loot-toasts.money.tooltip"],
-			default			= defaults["quality-of-life"]["hide-loot-toasts-money"],
+			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-money"],
 			parentInit		= initializerHideLootToasts,
 			parentCondition	= function() return settingHideLootToasts:GetValue() end,
 			shownPredicate	= isInterfaceExpanded
@@ -139,7 +138,7 @@ function Options:Initialize()
 			variableName	= "hide-loot-toasts-currency",
 			name			= L["options.quality-of-life.hide-loot-toasts.currency.name"],
 			tooltip			= L["options.quality-of-life.hide-loot-toasts.currency.tooltip"],
-			default			= defaults["quality-of-life"]["hide-loot-toasts-currency"],
+			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-currency"],
 			parentInit		= initializerHideLootToasts,
 			parentCondition	= function() return settingHideLootToasts:GetValue() end,
 			shownPredicate	= isInterfaceExpanded
@@ -155,7 +154,7 @@ function Options:Initialize()
 		variableName	= "auto-repair",
 		name			= L["options.quality-of-life.auto-repair.name"],
 		tooltip			= L["options.quality-of-life.auto-repair.tooltip"],
-		default			= defaults["quality-of-life"]["auto-repair"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-repair"],
 		shownPredicate	= isMerchantExpanded
 	})
 
@@ -166,7 +165,7 @@ function Options:Initialize()
 		variableName	= "auto-sell-poor",
 		name			= L["options.auto-sell.poor.name"],
 		tooltip			= L["options.auto-sell.poor.tooltip"],
-		default			= defaults["quality-of-life"]["auto-sell-poor"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-poor"],
 		shownPredicate	= isMerchantExpanded
 	})
 
@@ -177,7 +176,7 @@ function Options:Initialize()
 		variableName	= "auto-sell",
 		name			= L["options.quality-of-life.auto-sell.name"],
 		tooltip			= L["options.quality-of-life.auto-sell.tooltip"],
-		default			= defaults["quality-of-life"]["auto-sell"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell"],
 		shownPredicate	= isMerchantExpanded
 	})
 
@@ -188,7 +187,7 @@ function Options:Initialize()
 		variableName	= "auto-sell-marking-modifier",
 		name			= L["options.auto-sell.marking-modifier.name"],
 		tooltip			= L["options.auto-sell.marking-modifier.tooltip"],
-		default			= defaults["quality-of-life"]["auto-sell-marking-modifier"],
+		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-marking-modifier"],
 		options			= {
 			{ value = "ALT", label = L["auto-sell.marking-modifier.alt"] },
 			{ value = "CTRL", label = L["auto-sell.marking-modifier.ctrl"] },
