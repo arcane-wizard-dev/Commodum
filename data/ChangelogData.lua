@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Updated: Logo"
+		}
+	},
+	{
+		version = "v1.28",
+		date = "2026-09-27",
+		entries = {
 			"Minor code adjustments"
 		}
 	},
@@ -71,16 +78,6 @@ COM.CHANGELOG = {
 			"Changed: General loot notifications can now be hidden separately for items, money, and personal currencies",
 			"Changed: Quality-of-life options are now organized into expandable sections",
 			"Changed: Option names were shortened"
-		}
-	},
-	{
-		version = "v1.19",
-		date = "2026-08-18",
-		entries = {
-			"Added: Changelog window available from the options menu",
-			"Added: Changelog window available through the 'changelog' slash command",
-			"Removed: Version notice chat messages",
-			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	}
 }
