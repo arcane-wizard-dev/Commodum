@@ -77,7 +77,9 @@ function Options:Initialize()
 		name			= L["options.quality-of-life.military-time.name"],
 		tooltip			= L["options.quality-of-life.military-time.tooltip"],
 		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["military-time"],
-		onClick			= function() QualityOfLife:ApplyMilitaryTimeSetting() end,
+		onClick			= function()
+			QualityOfLife:ApplyMilitaryTimeSetting()
+		end,
 		shownPredicate	= isInterfaceExpanded
 	})
 
@@ -101,7 +103,9 @@ function Options:Initialize()
 			name			= L["options.quality-of-life.hide-loot-toasts.name"],
 			tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
 			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
-			onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
+			onClick			= function()
+				QualityOfLife:ApplyLootToastSetting()
+			end,
 			shownPredicate	= isInterfaceExpanded
 		})
 

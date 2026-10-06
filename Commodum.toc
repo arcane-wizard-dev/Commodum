@@ -11,6 +11,7 @@
 
 ## Notes: This addon adds a few quality-of-life improvements to everyday gameplay.
 ## Notes-deDE: Dieses Addon bringt ein paar Komfortverbesserungen für den Spielalltag.
+## Notes-ruRU: Этот аддон добавляет несколько удобных функций для повседневной игры.
 
 ## LoadSavedVariablesFirst: 1
 ## SavedVariables: Commodum_Options_v3

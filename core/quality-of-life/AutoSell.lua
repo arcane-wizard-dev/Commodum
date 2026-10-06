@@ -145,6 +145,7 @@ function QualityOfLife:OnModifiedItemClick(button, mouseButton)
 
 	if not self:IsItemSellable(containerInfo) then
 		Utils:PrintMessage(L["auto-sell.chat.cannot-mark"]:format(containerInfo.hyperlink or containerInfo.itemName))
+
 		return
 	end
 
@@ -218,6 +219,7 @@ end
 function QualityOfLife:ProcessNextSale()
 	if not self.saleInProgress or not self:IsAnyAutomaticSellingEnabled() or not IsMerchantAvailable() then
 		self:ResetSaleState()
+
 		return
 	end
 
@@ -225,6 +227,7 @@ function QualityOfLife:ProcessNextSale()
 
 	if not entry then
 		self:FinishSelling()
+
 		return
 	end
 
@@ -238,7 +241,10 @@ function QualityOfLife:ProcessNextSale()
 		or not self:ShouldSellItem(containerInfo)
 		or not self:IsItemSellable(containerInfo)
 	then
-		self:ScheduleSaleStep(0, function() QualityOfLife:ProcessNextSale() end)
+		self:ScheduleSaleStep(0, function()
+			QualityOfLife:ProcessNextSale()
+		end)
+
 		return
 	end
 
@@ -252,7 +258,10 @@ function QualityOfLife:ProcessNextSale()
 	}
 
 	C_Container.UseContainerItem(entry.bagID, entry.slotID)
-	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
+
+	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+		QualityOfLife:ConfirmPendingSale()
+	end)
 end
 
 function QualityOfLife:ConfirmPendingSale()
@@ -272,7 +281,11 @@ function QualityOfLife:ConfirmPendingSale()
 
 	if soldCount == 0 and pendingSale.confirmationAttempts < COM.AUTO_SELL_CONFIRMATION_ATTEMPTS then
 		pendingSale.confirmationAttempts = pendingSale.confirmationAttempts + 1
-		self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
+
+		self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+			QualityOfLife:ConfirmPendingSale()
+		end)
+
 		return
 	end
 
@@ -324,7 +337,9 @@ function QualityOfLife:StartAutoSell()
 	self.soldValue = 0
 	self.saleInProgress = true
 
-	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ProcessNextSale() end)
+	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+		QualityOfLife:ProcessNextSale()
+	end)
 end
 
 function QualityOfLife:StopAutoSell()

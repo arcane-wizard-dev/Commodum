@@ -26,6 +26,7 @@ function QualityOfLife:RepairItemsAutomatically()
 
 	if GetMoney() < repairCost then
 		Utils:PrintMessage(L["auto-repair.chat.insufficient-funds"])
+
 		return
 	end
 

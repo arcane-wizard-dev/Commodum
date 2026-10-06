@@ -1,9 +1,12 @@
 local _, COM = ...
 
-COM.Localization = setmetatable({}, {__index=function(self,key)
-	geterrorhandler()("Commodum (Debug): Missing entry for '" .. tostring(key) .. "'")
-	return key
-end})
+COM.Localization = setmetatable({}, {
+	__index=function(self,key)
+		geterrorhandler()("Commodum (Debug): Missing entry for '" .. tostring(key) .. "'")
+
+		return key
+	end
+})
 
 local L = COM.Localization
 

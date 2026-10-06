@@ -13,7 +13,7 @@ function QualityOfLife:WatchFaction(factionID)
 	end
 
 	local watchedFactionData = C_Reputation.GetWatchedFactionData()
-	
+
 	if watchedFactionData and watchedFactionData.factionID == factionID then
 		return
 	end
