@@ -69,7 +69,11 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 
 	Utils:PrintDebug(string.format(
 		"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, cleanedOptions=%s, activeProfile=%s",
-		tostring(dbInit.characterGUID), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.cleanedOptions), tostring(dbInit.activeProfile)
+		tostring(dbInit.characterGUID),
+		tostring(dbInit.createdProfile),
+		tostring(dbInit.createdProfileKey),
+		tostring(dbInit.cleanedOptions),
+		tostring(dbInit.activeProfile)
 	))
 	Utils:PrintDebug("Addon fully loaded.")
 end
@@ -111,7 +115,16 @@ end
 function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
 	Utils:PrintDebug(string.format(
 		"Event 'SHOW_LOOT_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, toastMethod=%s, lessAwesome=%s, upgraded=%s, corrupted=%s",
-		tostring(typeIdentifier), tostring(itemLink), tostring(quantity), tostring(specID), tostring(sex), tostring(personalLootToast), tostring(toastMethod), tostring(lessAwesome), tostring(upgraded), tostring(corrupted)
+		tostring(typeIdentifier),
+		tostring(itemLink),
+		tostring(quantity),
+		tostring(specID),
+		tostring(sex),
+		tostring(personalLootToast),
+		tostring(toastMethod),
+		tostring(lessAwesome),
+		tostring(upgraded),
+		tostring(corrupted)
 	))
 
 	QualityOfLife:HandleLootToast(typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
