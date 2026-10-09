@@ -1,3 +1,7 @@
+**v1.30 (2026-10-09)**
+- Added: ruRU localization
+- Minor code adjustments
+
 **v1.29 (2026-10-03)**
 - Updated: Logo
 
