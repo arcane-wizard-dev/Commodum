@@ -8,6 +8,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: ruRU localization",
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.29",
+		date = "2026-10-03",
+		entries = {
 			"Updated: Logo"
 		}
 	},
@@ -69,15 +77,6 @@ COM.CHANGELOG = {
 		date = "2026-08-30",
 		entries = {
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.20",
-		date = "2026-08-21",
-		entries = {
-			"Changed: General loot notifications can now be hidden separately for items, money, and personal currencies",
-			"Changed: Quality-of-life options are now organized into expandable sections",
-			"Changed: Option names were shortened"
 		}
 	}
 }
