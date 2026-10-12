@@ -8,6 +8,7 @@ local QualityOfLife = COM.Modules.QualityOfLife
 
 -- Module imports
 local Utils = COM.Modules.Utils
+local AutoSellConfig = COM.UIConfig.AutoSell
 
 -----------------------
 --- Local Functions ---
@@ -115,8 +116,8 @@ function QualityOfLife:AddButtonTooltip(button)
 		local itemNameLine = _G[GameTooltip:GetName() .. "TextLeft1"]
 		local itemName = itemNameLine and itemNameLine:GetText()
 
-		if itemName and not itemName:find(COM.AUTO_SELL_TOOLTIP_ICON, 1, true) then
-			itemNameLine:SetText(itemName .. " " .. COM.AUTO_SELL_TOOLTIP_ICON)
+		if itemName and not itemName:find(AutoSellConfig.tooltipIcon, 1, true) then
+			itemNameLine:SetText(itemName .. " " .. AutoSellConfig.tooltipIcon)
 		end
 
 		GameTooltip:AddLine(" ")

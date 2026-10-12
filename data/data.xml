@@ -4,5 +4,6 @@
 	<Script file="OptionsData.lua" />
 
 	<Script file="CommonData.lua" />
+	<Script file="ui/quality-of-life/AutoSellUIConfig.lua" />
 	<Script file="ChangelogData.lua" />
 </Ui>

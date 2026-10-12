@@ -3,6 +3,7 @@ local addonName, COM = ...
 COM.Settings = COM.Settings or {}
 COM.Data = COM.Data or {}
 COM.State = COM.State or {}
+COM.UIConfig = COM.UIConfig or {}
 COM.Modules = COM.Modules or {}
 
 COM.Modules.Options = COM.Modules.Options or {}
