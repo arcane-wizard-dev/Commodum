@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Refactoring of the addon structure and source code"
+		}
+	},
+	{
+		version = "v1.30",
+		date = "2026-10-09",
+		entries = {
 			"Added: ruRU localization",
 			"Minor code adjustments"
 		}
@@ -70,13 +77,6 @@ COM.CHANGELOG = {
 		entries = {
 			"Added: TOC version for patch 12.1.5 [retail]",
 			"Changed: Quality-of-life options are now grouped into User Interface and Merchant Actions, with loot notifications under User Interface and poor-quality item sales before marked item sales"
-		}
-	},
-	{
-		version = "v1.21",
-		date = "2026-08-30",
-		entries = {
-			"Minor code adjustments"
 		}
 	}
 }
