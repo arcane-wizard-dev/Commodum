@@ -1,3 +1,6 @@
+**v1.32 (2026-10-14)**
+- Fixed: Repeated error messages for missing translations
+
 **v1.31 (2026-10-12)**
 - Refactoring of the addon structure and source code
 
