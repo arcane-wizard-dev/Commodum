@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Fixed: Repeated error messages for missing translations"
+		}
+	},
+	{
+		version = "v1.31",
+		date = "2026-10-12",
+		entries = {
 			"Refactoring of the addon structure and source code"
 		}
 	},
@@ -69,14 +76,6 @@ COM.CHANGELOG = {
 		date = "2026-09-13",
 		entries = {
 			"Updated: GitHub links following the organization rename to 'arcane-wizard-dev'"
-		}
-	},
-	{
-		version = "v1.22",
-		date = "2026-09-06",
-		entries = {
-			"Added: TOC version for patch 12.1.5 [retail]",
-			"Changed: Quality-of-life options are now grouped into User Interface and Merchant Actions, with loot notifications under User Interface and poor-quality item sales before marked item sales"
 		}
 	}
 }
