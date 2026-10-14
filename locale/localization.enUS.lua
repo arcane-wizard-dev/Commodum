@@ -2,6 +2,8 @@ local _, COM = ...
 
 COM.Localization = setmetatable({}, {
 	__index=function(self,key)
+		rawset(self, key, key)
+
 		geterrorhandler()("Commodum (Debug): Missing entry for '" .. tostring(key) .. "'")
 
 		return key
