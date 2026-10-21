@@ -20,7 +20,7 @@ Individual features and display options can be configured in the addon settings.
 
 * Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
 * Automatically sets the faction whose reputation changed as the watched faction.
-* Can independently hide general loot notifications for items, money, and personal currencies*.
+* Can independently hide general loot notifications for items, money, and personal currencies.*
 
 *\* This feature is only available in Retail.*
 
@@ -28,7 +28,7 @@ Individual features and display options can be configured in the addon settings.
 
 * Automatically repairs all damaged items using personal funds when a repair merchant window opens.
 * Can independently sell every poor-quality (gray) item when a merchant window opens.
-* Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens. Item markings are always saved per character, even when using the account profile.
+* Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
 
 ## Supported Languages & Flavors
 
