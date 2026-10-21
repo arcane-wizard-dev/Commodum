@@ -20,7 +20,7 @@ Individual features and display options can be configured in the addon settings.
 
 * Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
 * Automatically sets the faction whose reputation changed as the watched faction.
-* Can independently hide general loot notifications for items, money, and personal currencies.*
+* Can independently hide general loot notifications for items, money, and personal currencies.\*
 
 *\* This feature is only available in Retail.*
 
