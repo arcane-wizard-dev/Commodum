@@ -2,15 +2,15 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/arcane-wizard-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/arcane-wizard-dev/Commodum/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/arcane-wizard-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/arcane-wizard-dev/Commodum/releases)
 
-_Smooth out the little things._
+_Less clicking. More playing._
 
-Commodum is a World of Warcraft addon that adds a few quality-of-life improvements to everyday gameplay.
+Commodum is a World of Warcraft addon that repairs your gear, sells junk at vendors, automatically updates your watched faction when your reputation changes, and keeps the in-game clock in 24-hour format. Each tweak is optional.
 
 > ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
 ## Key Feature
 
-**Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
+**Quality of Life Tweaks** - Choose optional conveniences for vendor visits, watched reputation, the in-game clock and, in Retail, loot notifications.
 
 ## Features
 
@@ -27,8 +27,8 @@ Individual features and display options can be configured in the addon settings.
 ### Merchant Actions
 
 * Automatically repairs all damaged items using personal funds when a repair merchant window opens.
-* Can independently sell every poor-quality (gray) item when a merchant window opens.
-* Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
+* Automatically sells sellable poor-quality (gray) items from your bags when a merchant window opens; locked items are skipped.
+* Mark specific items with a configurable modifier key plus right-click to automatically sell matching copies at merchants; locked or unsellable items are skipped.
 
 ## Supported Languages & Flavors
 

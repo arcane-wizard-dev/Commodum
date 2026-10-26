@@ -1,10 +1,13 @@
 local addonName, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 local version = C_AddOns.GetAddOnMetadata(addonName, "Version") or ""
 local buildDate = C_AddOns.GetAddOnMetadata(addonName, "X-BuildDate") or ""
 
 COM.CHANGELOG = {
 	notices = {},
+	-- BEGIN GENERATED CHANGELOG
 	{
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
@@ -79,4 +82,5 @@ COM.CHANGELOG = {
 			"Changed: Addon initialization stops if the player identity is unavailable"
 		}
 	}
+	-- END GENERATED CHANGELOG
 }

@@ -1,5 +1,7 @@
 local _, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 -- Localization
 local L = COM.Localization
 

@@ -1,5 +1,7 @@
 local _, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 COM.AUTO_SELL_FIRST_BAG_ID = Enum.BagIndex.Backpack
 COM.AUTO_SELL_LAST_BAG_ID = COM.AUTO_SELL_FIRST_BAG_ID
 	+ Constants.InventoryConstants.NumBagSlots

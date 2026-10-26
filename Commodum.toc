@@ -8,6 +8,7 @@
 ## DefaultState: enabled
 
 ## Dependencies: ArcaneWizardLibrary
+## X-Library-Revision: 1
 
 ## Notes: This addon adds a few quality-of-life improvements to everyday gameplay.
 ## Notes-deDE: Dieses Addon bringt ein paar Komfortverbesserungen für den Spielalltag.
@@ -27,5 +28,6 @@
 ## X-Curseforge: https://www.curseforge.com/wow/addons/commodum
 ## X-Wago: https://addons.wago.io/addons/commodum
 
+LibraryCompatibility.lua
 Commodum.xml
 Commodum.lua

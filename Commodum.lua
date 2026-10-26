@@ -1,5 +1,7 @@
 local addonName, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 -- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)

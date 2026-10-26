@@ -1,5 +1,7 @@
 local _, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 COM.Localization = setmetatable({}, {
 	__index=function(self,key)
 		rawset(self, key, key)

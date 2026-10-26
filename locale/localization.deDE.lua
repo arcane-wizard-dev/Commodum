@@ -1,5 +1,7 @@
 local _, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 if GetLocale() ~= "deDE" then return end
 
 local L = COM.Localization

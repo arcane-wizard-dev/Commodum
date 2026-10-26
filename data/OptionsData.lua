@@ -1,5 +1,7 @@
 local _, COM = ...
 
+if COM.State and COM.State.libraryIncompatible then return end
+
 COM.OPTIONS_DEFAULTS = {
 	["general"] = {
 		["minimap-button"] = {
