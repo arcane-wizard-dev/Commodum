@@ -12,6 +12,16 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: Startup check for the minimum required Library revision",
+			"Updated: deDE, enUS, ruRU localizations",
+			"Updated: Addon description",
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.33",
+		date = "2026-10-16",
+		entries = {
 			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	},
@@ -71,15 +81,6 @@ COM.CHANGELOG = {
 		date = "2026-09-20",
 		entries = {
 			"Changed: Automatic reputation tracking no longer reselects the faction that is already being watched"
-		}
-	},
-	{
-		version = "v1.24",
-		date = "2026-09-18",
-		entries = {
-			"Added: Support for 'Forever'",
-			"Changed: Character profiles now use GUIDs",
-			"Changed: Addon initialization stops if the player identity is unavailable"
 		}
 	}
 	-- END GENERATED CHANGELOG
