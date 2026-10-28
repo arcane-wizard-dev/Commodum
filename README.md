@@ -4,13 +4,13 @@
 
 _Less clicking. More playing._
 
-Commodum is a World of Warcraft addon that simplifies everyday gameplay with optional quality-of-life improvements. It takes care of routine actions and allows parts of the interface to be adapted to personal preferences.
+Commodum is a World of Warcraft addon that simplifies everyday gameplay with optional quality-of-life improvements. It handles routine tasks and lets you adjust parts of the interface to suit your preferences.
 
 > ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
 ## Key Feature
 
-**Quality of Life Tweaks** - Offers individually selectable conveniences with configurable behavior that make everyday interactions with the game more comfortable.
+**Quality of Life Tweaks** - Offers optional conveniences that can be enabled and configured individually to make everyday interactions with the game more convenient.
 
 ## Features
 

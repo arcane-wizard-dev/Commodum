@@ -10,9 +10,9 @@
 ## Dependencies: ArcaneWizardLibrary
 ## X-Library-Revision: 1
 
-## Notes: This addon simplifies everyday gameplay with optional quality-of-life improvements. It takes care of routine actions and allows parts of the interface to be adapted to personal preferences.
-## Notes-deDE: Dieses Addon erleichtert den Spielalltag mit optionalen Komfortfunktionen. Es übernimmt wiederkehrende Aufgaben und erlaubt es, Teile der Benutzeroberfläche an eigene Vorlieben anzupassen.
-## Notes-ruRU: Этот аддон упрощает повседневную игру с помощью необязательных улучшений удобства. Он берёт на себя рутинные действия и позволяет настроить части интерфейса под личные предпочтения.
+## Notes: This addon simplifies everyday gameplay with optional quality-of-life improvements. It handles routine tasks and lets you adjust parts of the interface to suit your preferences.
+## Notes-deDE: Dieses Addon erleichtert den Spielalltag mit optionalen Komfortfunktionen. Es übernimmt wiederkehrende Aufgaben und lässt dich Teile der Benutzeroberfläche an deine Vorlieben anpassen.
+## Notes-ruRU: Этот аддон упрощает повседневную игру с помощью функций, которые можно включать по желанию. Он берёт на себя рутинные задачи и позволяет настроить отдельные элементы интерфейса под личные предпочтения.
 
 ## LoadSavedVariablesFirst: 1
 ## SavedVariables: Commodum_Options_v3
