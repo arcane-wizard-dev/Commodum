@@ -18,7 +18,7 @@ Individual features and display options can be configured in the addon settings.
 
 ### User Interface
 
-* Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
+* Keeps the in-game clock in 24-hour format, including after login or a UI reload.
 * Automatically shows the faction whose reputation just changed on the reputation bar.
 * Hides loot notifications for items, gold, and personal currencies, each separately.\*
 
@@ -28,7 +28,7 @@ Individual features and display options can be configured in the addon settings.
 
 * Automatically repairs all damaged items using personal funds when a repair merchant window opens.
 * Automatically sells sellable poor-quality (gray) items from the bags when a merchant window opens; locked items are skipped.
-* Automatically sells items marked with a modifier key + right-click at merchants; locked and unsellable items are skipped.
+* At merchants, automatically sells items marked by right-clicking while holding a modifier key, skipping locked and unsellable items.
 
 ## Supported Languages & Flavors
 
