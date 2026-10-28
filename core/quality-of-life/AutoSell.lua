@@ -17,7 +17,7 @@ local AutoSellConfig = COM.UIConfig.AutoSell
 -----------------------
 
 local function GetPressedModifier()
-	local pressedModifier
+	local pressedModifier = nil
 
 	if IsAltKeyDown() then
 		pressedModifier = "ALT"
@@ -123,10 +123,10 @@ function QualityOfLife:AddButtonTooltip(button)
 		end
 
 		GameTooltip:AddLine(" ")
-		GameTooltip:AddLine(L["auto-sell.tooltip.marked"]:format(self:GetMarkingModifierLabel()), 1, 0.82, 0)
+		GameTooltip:AddLine(L["auto-sell.tooltip.marked"]:format(self:GetMarkingModifierLabel()), unpack(AutoSellConfig.markedColor))
 	else
 		GameTooltip:AddLine(" ")
-		GameTooltip:AddLine(L["auto-sell.tooltip.unmarked"]:format(self:GetMarkingModifierLabel()), 0.53, 0.81, 0.98)
+		GameTooltip:AddLine(L["auto-sell.tooltip.unmarked"]:format(self:GetMarkingModifierLabel()), unpack(AutoSellConfig.unmarkedColor))
 	end
 
 	GameTooltip:Show()
