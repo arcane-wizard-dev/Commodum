@@ -12,6 +12,15 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: TOC version for patch 12.1.7 [retail]",
+			"Updated: Addon description",
+			"Removed: TOC version for patch 12.1.0 [retail]"
+		}
+	},
+	{
+		version = "v1.34",
+		date = "2026-10-28",
+		entries = {
 			"Added: Startup check for the minimum required Library revision",
 			"Updated: deDE, enUS, ruRU localizations",
 			"Updated: Addon description",
@@ -74,13 +83,6 @@ COM.CHANGELOG = {
 		entries = {
 			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility",
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.25",
-		date = "2026-09-20",
-		entries = {
-			"Changed: Automatic reputation tracking no longer reselects the faction that is already being watched"
 		}
 	}
 	-- END GENERATED CHANGELOG
