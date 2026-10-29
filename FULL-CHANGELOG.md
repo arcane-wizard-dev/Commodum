@@ -1,3 +1,8 @@
+**v1.35 (2026-10-29)**
+- Added: TOC version for patch 12.1.7 [retail]
+- Updated: Addon description
+- Removed: TOC version for patch 12.1.0 [retail]
+
 **v1.34 (2026-10-28)**
 - Added: Startup check for the minimum required Library revision
 - Updated: deDE, enUS, ruRU localizations
