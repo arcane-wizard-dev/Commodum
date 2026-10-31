@@ -98,56 +98,39 @@ function Options:Initialize()
 
 	if AWL.GAME_TYPE_RETAIL then
 		-- Hide Loot Toasts
-		local initializerHideLootToasts, settingHideLootToasts = AWL.Settings:AddCheckbox(category, {
-			variableTable	= COM.Settings.qualityOfLife,
-			settingKey		= addonName .. "_hide-loot-toasts",
-			variableName	= "hide-loot-toasts",
-			name			= L["options.quality-of-life.hide-loot-toasts.name"],
-			tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
-			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
-			onClick			= function()
+		local optionKeys = {}
+		local options = {}
+		for position, option in ipairs(COM.LOOT_TOAST_OPTIONS) do
+			optionKeys[position] = option.variableName
+			options[position] = {
+				value = position,
+				label = L[option.localizationKey .. ".name"],
+				tooltip = L[option.localizationKey .. ".tooltip"]
+			}
+		end
+
+		local selectionKey = "hide-loot-toast-types"
+		local variables = AWL.Settings:CreateMultiSelectProxy(COM.Settings.qualityOfLife, selectionKey, optionKeys)
+		local defaults = AWL.Settings:CreateMultiSelectProxy(COM.OPTIONS_DEFAULTS["quality-of-life"], selectionKey, optionKeys)
+
+		AWL.Settings:AddCheckboxDropdownCombo(category, layout, {
+			variableTable = variables,
+			checkboxSettingKey = addonName .. "_hide-loot-toasts",
+			checkboxVariableName = "hide-loot-toasts",
+			checkboxName = L["options.quality-of-life.hide-loot-toasts.name"],
+			checkboxTooltip = L["options.quality-of-life.hide-loot-toasts.tooltip"],
+			checkboxDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
+			checkboxOnClick = function()
 				QualityOfLife:ApplyLootToastSetting()
 			end,
-			shownPredicate	= isInterfaceExpanded
-		})
-
-		-- Hide Item Loot Toasts
-		AWL.Settings:AddCheckbox(category, {
-			variableTable	= COM.Settings.qualityOfLife,
-			settingKey		= addonName .. "_hide-loot-toasts-item",
-			variableName	= "hide-loot-toasts-item",
-			name			= L["options.quality-of-life.hide-loot-toasts.item.name"],
-			tooltip			= L["options.quality-of-life.hide-loot-toasts.item.tooltip"],
-			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-item"],
-			parentInit		= initializerHideLootToasts,
-			parentCondition	= function() return settingHideLootToasts:GetValue() end,
-			shownPredicate	= isInterfaceExpanded
-		})
-
-		-- Hide Money Loot Toasts
-		AWL.Settings:AddCheckbox(category, {
-			variableTable	= COM.Settings.qualityOfLife,
-			settingKey		= addonName .. "_hide-loot-toasts-money",
-			variableName	= "hide-loot-toasts-money",
-			name			= L["options.quality-of-life.hide-loot-toasts.money.name"],
-			tooltip			= L["options.quality-of-life.hide-loot-toasts.money.tooltip"],
-			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-money"],
-			parentInit		= initializerHideLootToasts,
-			parentCondition	= function() return settingHideLootToasts:GetValue() end,
-			shownPredicate	= isInterfaceExpanded
-		})
-
-		-- Hide Currency Loot Toasts
-		AWL.Settings:AddCheckbox(category, {
-			variableTable	= COM.Settings.qualityOfLife,
-			settingKey		= addonName .. "_hide-loot-toasts-currency",
-			variableName	= "hide-loot-toasts-currency",
-			name			= L["options.quality-of-life.hide-loot-toasts.currency.name"],
-			tooltip			= L["options.quality-of-life.hide-loot-toasts.currency.tooltip"],
-			default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts-currency"],
-			parentInit		= initializerHideLootToasts,
-			parentCondition	= function() return settingHideLootToasts:GetValue() end,
-			shownPredicate	= isInterfaceExpanded
+			dropdownSettingKey = addonName .. "_" .. selectionKey,
+			dropdownVariableName = selectionKey,
+			dropdownName = L["options.quality-of-life.hide-loot-toasts.types.name"],
+			dropdownTooltip = L["options.quality-of-life.hide-loot-toasts.types.tooltip"],
+			dropdownDefault = defaults[selectionKey],
+			dropdownOptions = options,
+			multiSelect = true,
+			shownPredicate = isInterfaceExpanded
 		})
 	end
 
@@ -176,32 +159,24 @@ function Options:Initialize()
 	})
 
 	-- Automatically Sell Marked Items
-	local initializerAutoSellMarked, settingAutoSellMarked = AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_auto-sell",
-		variableName	= "auto-sell",
-		name			= L["options.quality-of-life.auto-sell.name"],
-		tooltip			= L["options.quality-of-life.auto-sell.tooltip"],
-		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell"],
-		shownPredicate	= isMerchantExpanded
-	})
-
-	-- Marking Modifier
-	AWL.Settings:AddDropdown(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_auto-sell-marking-modifier",
-		variableName	= "auto-sell-marking-modifier",
-		name			= L["options.auto-sell.marking-modifier.name"],
-		tooltip			= L["options.auto-sell.marking-modifier.tooltip"],
-		default			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-marking-modifier"],
-		options			= {
+	AWL.Settings:AddCheckboxDropdownCombo(category, layout, {
+		variableTable = COM.Settings.qualityOfLife,
+		checkboxSettingKey = addonName .. "_auto-sell",
+		checkboxVariableName = "auto-sell",
+		checkboxName = L["options.quality-of-life.auto-sell.name"],
+		checkboxTooltip = L["options.quality-of-life.auto-sell.tooltip"],
+		checkboxDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell"],
+		dropdownSettingKey = addonName .. "_auto-sell-marking-modifier",
+		dropdownVariableName = "auto-sell-marking-modifier",
+		dropdownName = L["options.auto-sell.marking-modifier.name"],
+		dropdownTooltip = L["options.auto-sell.marking-modifier.tooltip"],
+		dropdownDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-marking-modifier"],
+		dropdownOptions = {
 			{ value = "ALT", label = L["auto-sell.marking-modifier.alt"] },
 			{ value = "CTRL", label = L["auto-sell.marking-modifier.ctrl"] },
 			{ value = "SHIFT", label = L["auto-sell.marking-modifier.shift"] }
 		},
-		parentInit		= initializerAutoSellMarked,
-		parentCondition	= function() return settingAutoSellMarked:GetValue() end,
-		shownPredicate	= isMerchantExpanded
+		shownPredicate = isMerchantExpanded
 	})
 
 	-- Profiles Section

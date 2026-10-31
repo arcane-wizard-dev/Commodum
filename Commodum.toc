@@ -1,4 +1,5 @@
 ## Interface: 120107, 120105, 16001
+## AllowLoadGameType: standard, wowhack, forever
 ## Title: Commodum
 ## Author: Arcane Wizard | created by diomsg
 
@@ -8,7 +9,7 @@
 ## DefaultState: enabled
 
 ## Dependencies: ArcaneWizardLibrary
-## X-Library-Revision: 1
+## X-Library-Revision: 2
 
 ## Notes: This addon makes everyday gameplay more convenient. It handles routine tasks and lets you adjust parts of the interface to suit your preferences.
 ## Notes-deDE: Dieses Addon erleichtert den Spielalltag. Es übernimmt wiederkehrende Aufgaben und lässt dich Teile der Benutzeroberfläche an deine Vorlieben anpassen.

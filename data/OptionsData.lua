@@ -2,6 +2,12 @@ local _, COM = ...
 
 if COM.State and COM.State.libraryIncompatible then return end
 
+COM.LOOT_TOAST_OPTIONS = {
+	{variableName = "hide-loot-toasts-item", localizationKey = "options.quality-of-life.hide-loot-toasts.item"},
+	{variableName = "hide-loot-toasts-money", localizationKey = "options.quality-of-life.hide-loot-toasts.money"},
+	{variableName = "hide-loot-toasts-currency", localizationKey = "options.quality-of-life.hide-loot-toasts.currency"}
+}
+
 COM.OPTIONS_DEFAULTS = {
 	["general"] = {
 		["minimap-button"] = {
