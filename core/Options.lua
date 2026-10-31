@@ -104,8 +104,7 @@ function Options:Initialize()
 			optionKeys[position] = option.variableName
 			options[position] = {
 				value = position,
-				label = L[option.localizationKey .. ".name"],
-				tooltip = L[option.localizationKey .. ".tooltip"]
+				label = L[option.localizationKey .. ".name"]
 			}
 		end
 
@@ -126,7 +125,7 @@ function Options:Initialize()
 			dropdownSettingKey = addonName .. "_" .. selectionKey,
 			dropdownVariableName = selectionKey,
 			dropdownName = L["options.quality-of-life.hide-loot-toasts.types.name"],
-			dropdownTooltip = L["options.quality-of-life.hide-loot-toasts.types.tooltip"],
+			dropdownTooltip = L["options.quality-of-life.hide-loot-toasts.tooltip"],
 			dropdownDefault = defaults[selectionKey],
 			dropdownOptions = options,
 			multiSelect = true,
