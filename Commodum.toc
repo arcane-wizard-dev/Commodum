@@ -1,5 +1,4 @@
 ## Interface: 120107, 120105, 16001
-## AllowLoadGameType: standard, wowhack, forever
 ## Title: Commodum
 ## Author: Arcane Wizard | created by diomsg
 
