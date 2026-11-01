@@ -1,3 +1,6 @@
+**v1.37 (2026-11-01)**
+- Changed: The TOC no longer restricts loading by game type
+
 **v1.36 (2026-11-01)**
 - Changed: Grouped related settings in the options menu and clarified their tooltips
 - Changed: Limited loading to Retail, Forever, and Talebound
