@@ -12,6 +12,16 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: Grouped related settings in the options menu and clarified their tooltips",
+			"Changed: Limited loading to Retail, Forever, and Talebound",
+			"Updated: deDE, enUS, ruRU localizations",
+			"Requires Arcane Wizard: Library revision 2 or later"
+		}
+	},
+	{
+		version = "v1.35",
+		date = "2026-10-29",
+		entries = {
 			"Added: TOC version for patch 12.1.7 [retail]",
 			"Updated: Addon description",
 			"Removed: TOC version for patch 12.1.0 [retail]"
@@ -75,14 +85,6 @@ COM.CHANGELOG = {
 		date = "2026-09-24",
 		entries = {
 			"Updated: Compatibility with the beta client [forever]"
-		}
-	},
-	{
-		version = "v1.26",
-		date = "2026-09-22",
-		entries = {
-			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility",
-			"Minor code adjustments"
 		}
 	}
 	-- END GENERATED CHANGELOG
