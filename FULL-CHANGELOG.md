@@ -1,3 +1,9 @@
+**v1.36 (2026-11-01)**
+- Changed: Grouped related settings in the options menu and clarified their tooltips
+- Changed: Limited loading to Retail, Forever, and Talebound
+- Updated: deDE, enUS, ruRU localizations
+- Requires Arcane Wizard: Library revision 2 or later
+
 **v1.35 (2026-10-29)**
 - Added: TOC version for patch 12.1.7 [retail]
 - Updated: Addon description
