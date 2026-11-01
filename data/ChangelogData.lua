@@ -12,6 +12,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: The TOC no longer restricts loading by game type"
+		}
+	},
+	{
+		version = "v1.36",
+		date = "2026-11-01",
+		entries = {
 			"Changed: Grouped related settings in the options menu and clarified their tooltips",
 			"Changed: Limited loading to Retail, Forever, and Talebound",
 			"Updated: deDE, enUS, ruRU localizations",
@@ -78,13 +85,6 @@ COM.CHANGELOG = {
 		date = "2026-09-27",
 		entries = {
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.27",
-		date = "2026-09-24",
-		entries = {
-			"Updated: Compatibility with the beta client [forever]"
 		}
 	}
 	-- END GENERATED CHANGELOG
