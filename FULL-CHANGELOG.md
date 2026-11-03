@@ -1,3 +1,8 @@
+**v1.38 (2026-11-03)**
+- Changed: The debug mode option now combines an enable checkbox with a Basic or Advanced level selector
+- Updated: deDE, enUS, ruRU localizations
+- Minor code adjustments
+
 **v1.37 (2026-11-01)**
 - Changed: The TOC no longer restricts loading by game type
 
