@@ -12,6 +12,15 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: The debug mode option now combines an enable checkbox with a Basic or Advanced level selector",
+			"Updated: deDE, enUS, ruRU localizations",
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.37",
+		date = "2026-11-01",
+		entries = {
 			"Changed: The TOC no longer restricts loading by game type"
 		}
 	},
@@ -78,13 +87,6 @@ COM.CHANGELOG = {
 		date = "2026-10-03",
 		entries = {
 			"Updated: Logo"
-		}
-	},
-	{
-		version = "v1.28",
-		date = "2026-09-27",
-		entries = {
-			"Minor code adjustments"
 		}
 	}
 	-- END GENERATED CHANGELOG
