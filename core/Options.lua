@@ -58,13 +58,22 @@ function Options:Initialize()
 	})
 
 	-- Debug Mode
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.general,
-		settingKey		= addonName .. "_debug-mode",
-		variableName	= "debug-mode",
-		name			= L["options.general.debug-mode.name"],
-		tooltip			= L["options.general.debug-mode.tooltip"],
-		default			= COM.OPTIONS_DEFAULTS["general"]["debug-mode"]
+	AWL.Settings:AddCheckboxDropdownCombo(category, layout, {
+		variableTable			= COM.Settings.general,
+		checkboxSettingKey		= addonName .. "_debug-mode",
+		checkboxVariableName	= "debug-mode",
+		checkboxName			= L["options.general.debug-mode.name"],
+		checkboxTooltip			= L["options.general.debug-mode.tooltip"],
+		checkboxDefault			= COM.OPTIONS_DEFAULTS.general["debug-mode"],
+		dropdownSettingKey		= addonName .. "_debug-level",
+		dropdownVariableName	= "debug-level",
+		dropdownName			= L["options.general.debug-mode.level.name"],
+		dropdownTooltip			= L["options.general.debug-mode.level.tooltip"],
+		dropdownDefault			= COM.OPTIONS_DEFAULTS.general["debug-level"],
+		dropdownOptions			= {
+			{value = "basic", label = L["options.general.debug-mode.level.value.basic"]},
+			{value = "advanced", label = L["options.general.debug-mode.level.value.advanced"]}
+		}
 	})
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.quality-of-life"]))
@@ -113,23 +122,23 @@ function Options:Initialize()
 		local defaults = AWL.Settings:CreateMultiSelectProxy(COM.OPTIONS_DEFAULTS["quality-of-life"], selectionKey, optionKeys)
 
 		AWL.Settings:AddCheckboxDropdownCombo(category, layout, {
-			variableTable = variables,
-			checkboxSettingKey = addonName .. "_hide-loot-toasts",
-			checkboxVariableName = "hide-loot-toasts",
-			checkboxName = L["options.quality-of-life.hide-loot-toasts.name"],
-			checkboxTooltip = L["options.quality-of-life.hide-loot-toasts.tooltip"],
-			checkboxDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
-			checkboxOnClick = function()
+			variableTable			= variables,
+			checkboxSettingKey		= addonName .. "_hide-loot-toasts",
+			checkboxVariableName	= "hide-loot-toasts",
+			checkboxName			= L["options.quality-of-life.hide-loot-toasts.name"],
+			checkboxTooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
+			checkboxDefault			= COM.OPTIONS_DEFAULTS["quality-of-life"]["hide-loot-toasts"],
+			checkboxOnClick			= function()
 				QualityOfLife:ApplyLootToastSetting()
 			end,
-			dropdownSettingKey = addonName .. "_" .. selectionKey,
-			dropdownVariableName = selectionKey,
-			dropdownName = L["options.quality-of-life.hide-loot-toasts.types.name"],
-			dropdownTooltip = L["options.quality-of-life.hide-loot-toasts.tooltip"],
-			dropdownDefault = defaults[selectionKey],
-			dropdownOptions = options,
-			multiSelect = true,
-			shownPredicate = isInterfaceExpanded
+			dropdownSettingKey		= addonName .. "_" .. selectionKey,
+			dropdownVariableName	= selectionKey,
+			dropdownName			= L["options.quality-of-life.hide-loot-toasts.types.name"],
+			dropdownTooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
+			dropdownDefault			= defaults[selectionKey],
+			dropdownOptions			= options,
+			multiSelect				= true,
+			shownPredicate			= isInterfaceExpanded
 		})
 	end
 
@@ -159,23 +168,23 @@ function Options:Initialize()
 
 	-- Automatically Sell Marked Items
 	AWL.Settings:AddCheckboxDropdownCombo(category, layout, {
-		variableTable = COM.Settings.qualityOfLife,
-		checkboxSettingKey = addonName .. "_auto-sell",
-		checkboxVariableName = "auto-sell",
-		checkboxName = L["options.quality-of-life.auto-sell.name"],
-		checkboxTooltip = L["options.quality-of-life.auto-sell.tooltip"],
-		checkboxDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell"],
-		dropdownSettingKey = addonName .. "_auto-sell-marking-modifier",
-		dropdownVariableName = "auto-sell-marking-modifier",
-		dropdownName = L["options.auto-sell.marking-modifier.name"],
-		dropdownTooltip = L["options.auto-sell.marking-modifier.tooltip"],
-		dropdownDefault = COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-marking-modifier"],
-		dropdownOptions = {
-			{ value = "ALT", label = L["auto-sell.marking-modifier.alt"] },
-			{ value = "CTRL", label = L["auto-sell.marking-modifier.ctrl"] },
-			{ value = "SHIFT", label = L["auto-sell.marking-modifier.shift"] }
+		variableTable			= COM.Settings.qualityOfLife,
+		checkboxSettingKey		= addonName .. "_auto-sell",
+		checkboxVariableName	= "auto-sell",
+		checkboxName			= L["options.quality-of-life.auto-sell.name"],
+		checkboxTooltip			= L["options.quality-of-life.auto-sell.tooltip"],
+		checkboxDefault			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell"],
+		dropdownSettingKey		= addonName .. "_auto-sell-marking-modifier",
+		dropdownVariableName	= "auto-sell-marking-modifier",
+		dropdownName			= L["options.auto-sell.marking-modifier.name"],
+		dropdownTooltip			= L["options.auto-sell.marking-modifier.tooltip"],
+		dropdownDefault			= COM.OPTIONS_DEFAULTS["quality-of-life"]["auto-sell-marking-modifier"],
+		dropdownOptions			= {
+			{value = "ALT", label = L["auto-sell.marking-modifier.alt"]},
+			{value = "CTRL", label = L["auto-sell.marking-modifier.ctrl"]},
+			{value = "SHIFT", label = L["auto-sell.marking-modifier.shift"]}
 		},
-		shownPredicate = isMerchantExpanded
+		shownPredicate			= isMerchantExpanded
 	})
 
 	-- Profiles Section

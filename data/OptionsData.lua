@@ -17,6 +17,7 @@ COM.OPTIONS_DEFAULTS = {
 			["showInCompartment"] = false
 		},
 		["debug-mode"] = false,
+		["debug-level"] = "basic",
 	},
 	["quality-of-life"] = {
 		["military-time"] = true,
