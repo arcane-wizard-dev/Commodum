@@ -12,6 +12,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: Debug messages are now converted and formatted only when debug mode is enabled",
+			"Requires Arcane Wizard: Library revision 4 or later"
+		}
+	},
+	{
+		version = "v1.38",
+		date = "2026-11-03",
+		entries = {
 			"Changed: The debug mode option now combines an enable checkbox with a Basic or Advanced level selector",
 			"Updated: deDE, enUS, ruRU localizations",
 			"Minor code adjustments"
@@ -80,13 +88,6 @@ COM.CHANGELOG = {
 		entries = {
 			"Added: ruRU localization",
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.29",
-		date = "2026-10-03",
-		entries = {
-			"Updated: Logo"
 		}
 	}
 	-- END GENERATED CHANGELOG
