@@ -1,3 +1,7 @@
+**v1.39 (2026-11-05)**
+- Changed: Debug messages are now converted and formatted only when debug mode is enabled
+- Requires Arcane Wizard: Library revision 4 or later
+
 **v1.38 (2026-11-03)**
 - Changed: The debug mode option now combines an enable checkbox with a Basic or Advanced level selector
 - Updated: deDE, enUS, ruRU localizations
