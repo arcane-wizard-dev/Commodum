@@ -8,7 +8,7 @@
 ## DefaultState: enabled
 
 ## Dependencies: ArcaneWizardLibrary
-## X-Library-Revision: 2
+## X-Library-Revision: 4
 
 ## Notes: This addon makes everyday gameplay more convenient. It handles routine tasks and lets you adjust parts of the interface to suit your preferences.
 ## Notes-deDE: Dieses Addon erleichtert den Spielalltag. Es übernimmt wiederkehrende Aufgaben und lässt dich Teile der Benutzeroberfläche an deine Vorlieben anpassen.
