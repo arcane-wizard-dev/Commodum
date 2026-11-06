@@ -1,3 +1,8 @@
+**v1.40 (2026-11-06)**
+- Changed: The Basic debug level now shows important messages, while Advanced also includes technical details
+- Updated: deDE, enUS, ruRU localizations
+- Removed obsolete code for better maintainability
+
 **v1.39 (2026-11-05)**
 - Changed: Debug messages are now converted and formatted only when debug mode is enabled
 - Requires Arcane Wizard: Library revision 4 or later
