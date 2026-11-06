@@ -69,7 +69,7 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 
 	isInitialized = true
 
-	Utils:PrintDebug(
+	Utils:PrintDebugAdvanced(
 		"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, cleanedOptions=%s, activeProfile=%s",
 		dbInit.characterGUID,
 		dbInit.createdProfile,
@@ -81,7 +81,7 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 end
 
 function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
-	Utils:PrintDebug(
+	Utils:PrintDebugAdvanced(
 		"Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=%s, isReloadingUi=%s",
 		isInitialLogin, isReloadingUi
 	)
@@ -90,7 +90,7 @@ function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 end
 
 function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
-	Utils:PrintDebug(
+	Utils:PrintDebugAdvanced(
 		"Event 'FACTION_STANDING_CHANGED' fired. Payload: factionID=%s, updatedStanding=%s",
 		factionID, updatedStanding
 	)
@@ -107,15 +107,8 @@ function CommodumFrame:MERCHANT_CLOSED()
 	QualityOfLife:StopAutoSell()
 end
 
-function CommodumFrame:LOOT_ITEM_ROLL_WON(_, itemLink, rollQuantity, rollType, roll, upgraded)
-	Utils:PrintDebug(
-		"Event 'LOOT_ITEM_ROLL_WON' fired. Payload: itemLink=%s, rollQuantity=%s, rollType=%s, roll=%s, upgraded=%s",
-		itemLink, rollQuantity, rollType, roll, upgraded
-	)
-end
-
 function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
-	Utils:PrintDebug(
+	Utils:PrintDebugAdvanced(
 		"Event 'SHOW_LOOT_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, toastMethod=%s, lessAwesome=%s, upgraded=%s, corrupted=%s",
 		typeIdentifier,
 		itemLink,
@@ -132,41 +125,8 @@ function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, sp
 	QualityOfLife:HandleLootToast(typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
 end
 
-function CommodumFrame:SHOW_LOOT_TOAST_UPGRADE(_, itemLink, quantity, specID, sex, baseQuality, personalLootToast, lessAwesome)
-	Utils:PrintDebug(
-		"Event 'SHOW_LOOT_TOAST_UPGRADE' fired. Payload: itemLink=%s, quantity=%s, specID=%s, sex=%s, baseQuality=%s, personalLootToast=%s, lessAwesome=%s",
-		itemLink, quantity, specID, sex, baseQuality, personalLootToast, lessAwesome
-	)
-end
-
-function CommodumFrame:SHOW_LOOT_TOAST_LEGENDARY_LOOTED(_, itemLink)
-	Utils:PrintDebug(
-		"Event 'SHOW_LOOT_TOAST_LEGENDARY_LOOTED' fired. Payload: itemLink=%s",
-		itemLink
-	)
-end
-
-function CommodumFrame:SHOW_PVP_FACTION_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, lessAwesome)
-	Utils:PrintDebug(
-		"Event 'SHOW_PVP_FACTION_LOOT_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, lessAwesome=%s",
-		typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, lessAwesome
-	)
-end
-
-function CommodumFrame:SHOW_RATED_PVP_REWARD_TOAST(_, typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, lessAwesome)
-	Utils:PrintDebug(
-		"Event 'SHOW_RATED_PVP_REWARD_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, lessAwesome=%s",
-		typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, lessAwesome
-	)
-end
-
 if AWL.GAME_TYPE_RETAIL then
-	CommodumFrame:RegisterEvent("LOOT_ITEM_ROLL_WON")
 	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST")
-	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_UPGRADE")
-	CommodumFrame:RegisterEvent("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
-	CommodumFrame:RegisterEvent("SHOW_PVP_FACTION_LOOT_TOAST")
-	CommodumFrame:RegisterEvent("SHOW_RATED_PVP_REWARD_TOAST")
 end
 
 CommodumFrame:RegisterEvent("ADDON_LOADED")
