@@ -1,3 +1,6 @@
+**v1.41 (2026-11-08)**
+- Refactoring of the addon structure and source code
+
 **v1.40 (2026-11-06)**
 - Changed: The Basic debug level now shows important messages, while Advanced also includes technical details
 - Updated: deDE, enUS, ruRU localizations
