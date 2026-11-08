@@ -4,7 +4,6 @@ if COM.State and COM.State.libraryIncompatible then return end
 
 COM.Settings = COM.Settings or {}
 COM.Data = COM.Data or {}
-COM.State = COM.State or {}
 COM.UIConfig = COM.UIConfig or {}
 COM.Modules = COM.Modules or {}
 

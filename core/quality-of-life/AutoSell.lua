@@ -1,4 +1,4 @@
-local _, COM = ...
+local addonName, COM = ...
 
 if COM.State and COM.State.libraryIncompatible then return end
 
@@ -11,6 +11,9 @@ local QualityOfLife = COM.Modules.QualityOfLife
 -- Module imports
 local Utils = COM.Modules.Utils
 local AutoSellConfig = COM.UIConfig.AutoSell
+
+-- Variables
+local saleSession = nil
 
 -----------------------
 --- Local Functions ---
@@ -51,7 +54,41 @@ local function GetItemSellPrice(containerInfo)
 end
 
 local function IsMerchantAvailable()
-	return MerchantFrame and MerchantFrame:IsShown() and MerchantFrame.selectedTab ~= 2
+	return MerchantFrame and MerchantFrame:IsShown() and MerchantFrame.selectedTab ~= COM.AUTO_SELL_BUYBACK_TAB_ID
+end
+
+local function ResetSaleState()
+	local session = saleSession
+	saleSession = nil
+
+	if session and session.timer then
+		session.timer:Cancel()
+	end
+end
+
+local function ScheduleSaleStep(session, delay, callback)
+	if saleSession ~= session then
+		return
+	end
+
+	session.timer = C_Timer.NewTimer(delay, function()
+		if saleSession ~= session then
+			return
+		end
+
+		session.timer = nil
+		callback()
+	end)
+end
+
+local function FinishSelling(session)
+	ResetSaleState()
+
+	if session.soldItemCount == 1 then
+		Utils:PrintMessage(L["auto-sell.chat.sold-one"]:format(GetMoneyString(session.soldValue)))
+	elseif session.soldItemCount > 1 then
+		Utils:PrintMessage(L["auto-sell.chat.sold-many"]:format(session.soldItemCount, GetMoneyString(session.soldValue)))
+	end
 end
 
 ------------------------
@@ -67,7 +104,7 @@ function QualityOfLife:IsItemMarked(itemID)
 end
 
 function QualityOfLife:IsItemSellable(containerInfo)
-	return containerInfo and not containerInfo.hasNoValue and GetItemSellPrice(containerInfo) > 0
+	return GetItemSellPrice(containerInfo) > 0
 end
 
 function QualityOfLife:GetMarkingModifier()
@@ -184,95 +221,66 @@ function QualityOfLife:TryInitializeContainerHooks()
 	self.containerHooksInitialized = true
 end
 
-function QualityOfLife:CancelSaleTimer()
-	if self.saleTimer then
-		self.saleTimer:Cancel()
-		self.saleTimer = nil
-	end
-end
-
-function QualityOfLife:ResetSaleState()
-	self:CancelSaleTimer()
-	self.saleQueue = nil
-	self.saleQueueIndex = nil
-	self.pendingSale = nil
-	self.soldItemCount = nil
-	self.soldValue = nil
-	self.saleInProgress = false
-end
-
-function QualityOfLife:ScheduleSaleStep(delay, callback)
-	self:CancelSaleTimer()
-	self.saleTimer = C_Timer.NewTimer(delay, callback)
-end
-
-function QualityOfLife:FinishSelling()
-	local soldItemCount = self.soldItemCount or 0
-	local soldValue = self.soldValue or 0
-
-	self:ResetSaleState()
-
-	if soldItemCount == 1 then
-		Utils:PrintMessage(L["auto-sell.chat.sold-one"]:format(GetMoneyString(soldValue)))
-	elseif soldItemCount > 1 then
-		Utils:PrintMessage(L["auto-sell.chat.sold-many"]:format(soldItemCount, GetMoneyString(soldValue)))
-	end
-end
-
 function QualityOfLife:ProcessNextSale()
-	if not self.saleInProgress or not self:IsAnyAutomaticSellingEnabled() or not IsMerchantAvailable() then
-		self:ResetSaleState()
+	local session = saleSession
+	if not session or not self:IsAnyAutomaticSellingEnabled() or not IsMerchantAvailable() then
+		ResetSaleState()
 
 		return
 	end
 
-	local entry = self.saleQueue[self.saleQueueIndex]
+	local entry = session.queue[session.queueIndex]
 
 	if not entry then
-		self:FinishSelling()
+		FinishSelling(session)
 
 		return
 	end
 
-	self.saleQueueIndex = self.saleQueueIndex + 1
+	session.queueIndex = session.queueIndex + 1
 
 	local containerInfo = C_Container.GetContainerItemInfo(entry.bagID, entry.slotID)
+	local sellPrice = 0
 
-	if not containerInfo
-		or containerInfo.itemID ~= entry.itemID
-		or containerInfo.isLocked
-		or not self:ShouldSellItem(containerInfo)
-		or not self:IsItemSellable(containerInfo)
+	if containerInfo
+		and containerInfo.itemID == entry.itemID
+		and not containerInfo.isLocked
+		and self:ShouldSellItem(containerInfo)
 	then
-		self:ScheduleSaleStep(0, function()
+		sellPrice = GetItemSellPrice(containerInfo)
+	end
+
+	if not containerInfo or sellPrice <= 0 then
+		ScheduleSaleStep(session, 0, function()
 			QualityOfLife:ProcessNextSale()
 		end)
 
 		return
 	end
 
-	self.pendingSale = {
+	session.pendingSale = {
 		bagID = entry.bagID,
 		slotID = entry.slotID,
 		itemID = entry.itemID,
 		stackCount = containerInfo.stackCount,
-		sellPrice = GetItemSellPrice(containerInfo),
+		sellPrice = sellPrice,
 		confirmationAttempts = 0
 	}
 
 	C_Container.UseContainerItem(entry.bagID, entry.slotID)
 
-	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+	ScheduleSaleStep(session, COM.AUTO_SELL_DELAY, function()
 		QualityOfLife:ConfirmPendingSale()
 	end)
 end
 
 function QualityOfLife:ConfirmPendingSale()
-	if not self.saleInProgress or not self.pendingSale then
+	local session = saleSession
+	local pendingSale = session and session.pendingSale
+	if not session or not pendingSale then
 		return
 	end
 
-	local pendingSale = self.pendingSale
 	local containerInfo = C_Container.GetContainerItemInfo(pendingSale.bagID, pendingSale.slotID)
 	local remainingCount = 0
 
@@ -285,7 +293,7 @@ function QualityOfLife:ConfirmPendingSale()
 	if soldCount == 0 and pendingSale.confirmationAttempts < COM.AUTO_SELL_CONFIRMATION_ATTEMPTS then
 		pendingSale.confirmationAttempts = pendingSale.confirmationAttempts + 1
 
-		self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+		ScheduleSaleStep(session, COM.AUTO_SELL_DELAY, function()
 			QualityOfLife:ConfirmPendingSale()
 		end)
 
@@ -293,11 +301,11 @@ function QualityOfLife:ConfirmPendingSale()
 	end
 
 	if soldCount > 0 then
-		self.soldItemCount = self.soldItemCount + soldCount
-		self.soldValue = self.soldValue + pendingSale.sellPrice * soldCount
+		session.soldItemCount = session.soldItemCount + soldCount
+		session.soldValue = session.soldValue + pendingSale.sellPrice * soldCount
 	end
 
-	self.pendingSale = nil
+	session.pendingSale = nil
 	self:ProcessNextSale()
 end
 
@@ -322,7 +330,7 @@ function QualityOfLife:BuildSaleQueue()
 end
 
 function QualityOfLife:StartAutoSell()
-	self:ResetSaleState()
+	ResetSaleState()
 
 	if not self:IsAnyAutomaticSellingEnabled() then
 		return
@@ -334,19 +342,21 @@ function QualityOfLife:StartAutoSell()
 		return
 	end
 
-	self.saleQueue = saleQueue
-	self.saleQueueIndex = 1
-	self.soldItemCount = 0
-	self.soldValue = 0
-	self.saleInProgress = true
+	local session = {
+		queue = saleQueue,
+		queueIndex = 1,
+		soldItemCount = 0,
+		soldValue = 0
+	}
+	saleSession = session
 
-	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function()
+	ScheduleSaleStep(session, COM.AUTO_SELL_DELAY, function()
 		QualityOfLife:ProcessNextSale()
 	end)
 end
 
 function QualityOfLife:StopAutoSell()
-	self:ResetSaleState()
+	ResetSaleState()
 end
 
 function QualityOfLife:InitializeAutoSell()
