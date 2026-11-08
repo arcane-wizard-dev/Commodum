@@ -12,6 +12,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Refactoring of the addon structure and source code"
+		}
+	},
+	{
+		version = "v1.40",
+		date = "2026-11-06",
+		entries = {
 			"Changed: The Basic debug level now shows important messages, while Advanced also includes technical details",
 			"Updated: deDE, enUS, ruRU localizations",
 			"Removed obsolete code for better maintainability"
@@ -82,13 +89,6 @@ COM.CHANGELOG = {
 		date = "2026-10-14",
 		entries = {
 			"Fixed: Repeated error messages for missing translations"
-		}
-	},
-	{
-		version = "v1.31",
-		date = "2026-10-12",
-		entries = {
-			"Refactoring of the addon structure and source code"
 		}
 	}
 	-- END GENERATED CHANGELOG
