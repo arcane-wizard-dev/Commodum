@@ -12,6 +12,15 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: Reworked the options menu to prevent errors in Blizzard's settings and added a button to restore default values",
+			"Removed: Addon options from Blizzard's settings search",
+			"Requires Arcane Wizard: Library revision 5 or later"
+		}
+	},
+	{
+		version = "v1.41",
+		date = "2026-11-08",
+		entries = {
 			"Refactoring of the addon structure and source code"
 		}
 	},
@@ -82,13 +91,6 @@ COM.CHANGELOG = {
 		date = "2026-10-16",
 		entries = {
 			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
-		}
-	},
-	{
-		version = "v1.32",
-		date = "2026-10-14",
-		entries = {
-			"Fixed: Repeated error messages for missing translations"
 		}
 	}
 	-- END GENERATED CHANGELOG
