@@ -7,7 +7,6 @@ local numBagSlots = (inventoryConstants and inventoryConstants.NumBagSlots) or r
 local numReagentBagSlots = (inventoryConstants and inventoryConstants.NumReagentBagSlots) or rawget(_G, "NUM_REAGENTBAG_FRAMES") or 0
 
 COM.AUTO_SELL_FIRST_BAG_ID = Enum.BagIndex.Backpack
--- Ohne bekannte Zahl regulärer Taschen nur den Rucksack durchsuchen.
 COM.AUTO_SELL_LAST_BAG_ID = COM.AUTO_SELL_FIRST_BAG_ID
 	+ (numBagSlots and numBagSlots + numReagentBagSlots or 0)
 COM.AUTO_SELL_BUYBACK_TAB_ID = 2
