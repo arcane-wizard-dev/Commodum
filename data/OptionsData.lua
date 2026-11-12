@@ -20,8 +20,8 @@ COM.OPTIONS_DEFAULTS = {
 		["debug-level"] = "basic",
 	},
 	["quality-of-life"] = {
-		["military-time"] = true,
-		["watched-faction"] = true,
+		["military-time"] = false,
+		["watched-faction"] = false,
 		["hide-loot-toasts"] = false,
 		["hide-loot-toasts-item"] = false,
 		["hide-loot-toasts-money"] = false,
