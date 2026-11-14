@@ -109,6 +109,7 @@ function Options:Initialize()
 		-- Hide Loot Toasts
 		local optionKeys = {}
 		local options = {}
+
 		for position, option in ipairs(COM.LOOT_TOAST_OPTIONS) do
 			optionKeys[position] = option.variableName
 			options[position] = {

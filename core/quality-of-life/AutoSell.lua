@@ -223,6 +223,7 @@ end
 
 function QualityOfLife:ProcessNextSale()
 	local session = saleSession
+
 	if not session or not self:IsAnyAutomaticSellingEnabled() or not IsMerchantAvailable() then
 		ResetSaleState()
 
@@ -277,6 +278,7 @@ end
 function QualityOfLife:ConfirmPendingSale()
 	local session = saleSession
 	local pendingSale = session and session.pendingSale
+
 	if not session or not pendingSale then
 		return
 	end

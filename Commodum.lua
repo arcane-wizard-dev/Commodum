@@ -107,7 +107,19 @@ function CommodumFrame:MERCHANT_CLOSED()
 	QualityOfLife:StopAutoSell()
 end
 
-function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
+function CommodumFrame:SHOW_LOOT_TOAST(
+	_,
+	typeIdentifier,
+	itemLink,
+	quantity,
+	specID,
+	sex,
+	personalLootToast,
+	toastMethod,
+	lessAwesome,
+	upgraded,
+	corrupted
+)
 	Utils:PrintDebugAdvanced(
 		"Event 'SHOW_LOOT_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, toastMethod=%s, lessAwesome=%s, upgraded=%s, corrupted=%s",
 		typeIdentifier,
@@ -122,7 +134,18 @@ function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, sp
 		corrupted
 	)
 
-	QualityOfLife:HandleLootToast(typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
+	QualityOfLife:HandleLootToast(
+		typeIdentifier,
+		itemLink,
+		quantity,
+		specID,
+		sex,
+		personalLootToast,
+		toastMethod,
+		lessAwesome,
+		upgraded,
+		corrupted
+	)
 end
 
 if AWL.GAME_TYPE_RETAIL then
@@ -137,6 +160,6 @@ CommodumFrame:RegisterEvent("MERCHANT_CLOSED")
 
 CommodumFrame:SetScript("OnEvent", CommodumFrame.OnEvent)
 
-SLASH_Commodum1, SLASH_Commodum2 = '/com', '/commodum'
+SLASH_Commodum1, SLASH_Commodum2 = "/com", "/commodum"
 
 SlashCmdList["Commodum"] = SlashCommand
