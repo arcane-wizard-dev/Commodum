@@ -12,6 +12,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Changed: 24-Hour Clock and Auto-Watch Reputation are now disabled by default",
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.42",
+		date = "2026-11-10",
+		entries = {
 			"Changed: Reworked the options menu to prevent errors in Blizzard's settings and added a button to restore default values",
 			"Removed: Addon options from Blizzard's settings search",
 			"Requires Arcane Wizard: Library revision 5 or later"
@@ -84,13 +92,6 @@ COM.CHANGELOG = {
 			"Updated: deDE, enUS, ruRU localizations",
 			"Updated: Addon description",
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v1.33",
-		date = "2026-10-16",
-		entries = {
-			"Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility"
 		}
 	}
 	-- END GENERATED CHANGELOG
