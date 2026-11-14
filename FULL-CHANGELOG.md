@@ -1,3 +1,7 @@
+**v1.43 (2026-11-14)**
+- Changed: 24-Hour Clock and Auto-Watch Reputation are now disabled by default
+- Minor code adjustments
+
 **v1.42 (2026-11-10)**
 - Changed: Reworked the options menu to prevent errors in Blizzard's settings and added a button to restore default values
 - Removed: Addon options from Blizzard's settings search
