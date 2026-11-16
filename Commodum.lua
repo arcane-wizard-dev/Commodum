@@ -33,8 +33,10 @@ local function SlashCommand(msg)
 		Utils:OpenSettings()
 	elseif command == "changelog" then
 		AWL.Frames:OpenChangelog(addonName, COM.CHANGELOG)
+	elseif command == "help" then
+		Addon:PrintSlashHelp(SLASH_Commodum1, {"changelog"})
 	else
-		Utils:PrintDebug("No arguments will be accepted.")
+		Addon:PrintSlashHelp(SLASH_Commodum1)
 	end
 end
 
