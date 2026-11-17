@@ -1,3 +1,7 @@
+**v1.44 (2026-11-17)**
+- Added: A help command lists available slash commands, and unknown commands show a hint in chat
+- Requires Arcane Wizard: Library revision 6 or later
+
 **v1.43 (2026-11-14)**
 - Changed: 24-Hour Clock and Auto-Watch Reputation are now disabled by default
 - Minor code adjustments
