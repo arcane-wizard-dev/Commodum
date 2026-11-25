@@ -42,7 +42,7 @@ Individual features and display options can be configured in the addon settings.
 To manage the addon, type the following commands in chat and press Enter:
 
 * Type `/com` or `/commodum` to access the addon options menu.
-* Type `/com help` or `/commodum help` to see answers to common questions about selling items and repairing equipment and a list of chat commands. You can also select Help in the Using the Addon row under About in the addon settings.
+* Type `/com help` or `/commodum help` to see answers to common questions about selling items and repairing equipment and a list of chat commands.
 * Type `/com changelog` or `/commodum changelog` to open the changelog.
 
 ## Bugs & Feedback
