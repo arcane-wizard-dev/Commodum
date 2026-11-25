@@ -12,6 +12,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: In-game help answers common questions and explains each chat command. Open it from the addon settings or type the addon's slash command followed by 'help'",
+			"Requires Arcane Wizard: Library revision 8 or later"
+		}
+	},
+	{
+		version = "v1.44",
+		date = "2026-11-17",
+		entries = {
 			"Added: A help command lists available slash commands, and unknown commands show a hint in chat",
 			"Requires Arcane Wizard: Library revision 6 or later"
 		}
@@ -81,15 +89,6 @@ COM.CHANGELOG = {
 			"Changed: Limited loading to Retail, Forever, and Talebound",
 			"Updated: deDE, enUS, ruRU localizations",
 			"Requires Arcane Wizard: Library revision 2 or later"
-		}
-	},
-	{
-		version = "v1.35",
-		date = "2026-10-29",
-		entries = {
-			"Added: TOC version for patch 12.1.7 [retail]",
-			"Updated: Addon description",
-			"Removed: TOC version for patch 12.1.0 [retail]"
 		}
 	}
 	-- END GENERATED CHANGELOG

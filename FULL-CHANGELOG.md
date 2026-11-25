@@ -1,3 +1,7 @@
+**v1.45 (2026-11-25)**
+- Added: In-game help answers common questions and explains each chat command. Open it from the addon settings or type the addon's slash command followed by 'help'
+- Requires Arcane Wizard: Library revision 8 or later
+
 **v1.44 (2026-11-17)**
 - Added: A help command lists available slash commands, and unknown commands show a hint in chat
 - Requires Arcane Wizard: Library revision 6 or later
