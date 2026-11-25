@@ -6,6 +6,13 @@ if GetLocale() ~= "deDE" then return end
 
 local L = COM.Localization
 
+-- Help
+
+L["help.faq.poor-items.question"] = "Müssen graue Gegenstände einzeln markiert werden?"
+L["help.faq.poor-items.answer"] = "Nein. Mit „Graue Gegenstände verkaufen“ verkauft Commodum beim Öffnen eines Händlerfensters alle verkäuflichen grauen Gegenstände aus den Taschen. Der Verkauf markierter Gegenstände lässt sich unabhängig davon ein- oder ausschalten."
+L["help.faq.repair.question"] = "Wer bezahlt die automatische Reparatur?"
+L["help.faq.repair.answer"] = "Commodum verwendet das Gold des aktuellen Charakters. Die Ausrüstung wird beim Öffnen eines Händlerfensters mit Reparaturfunktion repariert. Reicht das Gold nicht aus, erscheint eine Meldung im Chat."
+
 -- Options
 
 L["options.general"] = "Allgemeine Einstellungen"

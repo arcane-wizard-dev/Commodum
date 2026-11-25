@@ -2,5 +2,5 @@
 ### [@project-version@](https://github.com/arcane-wizard-dev/Commodum/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/arcane-wizard-dev/Commodum/releases)
 
-- Added: A help command lists available slash commands, and unknown commands show a hint in chat
-- Requires Arcane Wizard: Library revision 6 or later
+- Added: In-game help answers common questions about selling items and repairing equipment and explains each chat command. Open it from the addon settings or with /com help
+- Requires Arcane Wizard: Library revision 8 or later

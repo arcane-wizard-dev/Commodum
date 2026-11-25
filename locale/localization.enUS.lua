@@ -14,6 +14,13 @@ COM.Localization = setmetatable({}, {
 
 local L = COM.Localization
 
+-- Help
+
+L["help.faq.poor-items.question"] = "Does each gray item need to be marked for sale?"
+L["help.faq.poor-items.answer"] = "No. With \"Sell Poor-Quality Items\" enabled, Commodum sells all gray items with a vendor price from the bags when a merchant window opens. Selling marked items is a separate option."
+L["help.faq.repair.question"] = "Who pays for automatic repairs?"
+L["help.faq.repair.answer"] = "Commodum uses the current character's gold when visiting a merchant who can repair equipment. If the character cannot afford the repair, a message appears in chat."
+
 -- Options
 
 L["options.general"] = "General Options"

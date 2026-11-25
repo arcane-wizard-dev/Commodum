@@ -34,7 +34,7 @@ local function SlashCommand(msg)
 	elseif command == "changelog" then
 		AWL.Frames:OpenChangelog(addonName, COM.CHANGELOG)
 	elseif command == "help" then
-		Addon:PrintSlashHelp(SLASH_Commodum1, {"changelog"})
+		Utils.OpenHelp()
 	else
 		Addon:PrintSlashHelp(SLASH_Commodum1)
 	end
