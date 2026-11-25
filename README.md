@@ -42,7 +42,7 @@ Individual features and display options can be configured in the addon settings.
 To manage the addon, type the following commands in chat and press Enter:
 
 * Type `/com` or `/commodum` to access the addon options menu.
-* Type either command above followed by `help` to see the available chat commands and answers to frequently asked questions.
+* Type `/com help` or `/commodum help` to see the available chat commands and answers to frequently asked questions.
 * Type `/com changelog` or `/commodum changelog` to open the changelog.
 
 ## Bugs & Feedback
